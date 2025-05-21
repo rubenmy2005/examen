@@ -7,33 +7,28 @@ class receta(ABC):
         self.ingredientes = ingredientes  
         self.pasos = pasos  
 
+# Clase para mostrar las recetas
     @abstractmethod
     def mostrar(self):
-        pass
+        print("Ingredientes:")
+        for ing in self.ingredientes:
+            print(f"- {ing}")
+        print("Pasos:")
+        for paso in self.pasos:
+            print(f"{paso}")
+
 
 
 # Clase para recetas vegetarianas
 class recetas_vegetarianas(receta):
     def mostrar(self):
         print(f"Receta vegetariana: {self.nombre}")
-        print("Ingredientes:")
-        for ing in self.ingredientes:
-            print(f"- {ing}")
-        print("Pasos:")
-        for paso in self.pasos:
-            print(f"{paso}")
 
 
 # Clase para recetas no vegetarianas
 class recetas_no_vegetarianas(receta):
     def mostrar(self):
         print(f"Receta NO vegetariana: {self.nombre}")
-        print("Ingredientes:")
-        for ing in self.ingredientes:
-            print(f"- {ing}")
-        print("Pasos:")
-        for paso in self.pasos:
-            print(f"{paso}")
 
 
 # Clase con utilidades del restaurante
