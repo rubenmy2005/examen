@@ -8,7 +8,6 @@ class receta(ABC):
         self.pasos = pasos  
 
 # Clase para mostrar las recetas
-    @abstractmethod
     def mostrar(self):
         print("Ingredientes:")
         for ing in self.ingredientes:
@@ -43,25 +42,28 @@ class utilidades_restaurante:
     def mostrar_lista_ingredientes(lista):
         for l in lista:
             print(f"* {l}")
-
+    
+def crear_receta():
+    nombre = print("Dime el nombre de la receta: ")
+    ingrediente = []
+    print("introduce los ingredientes, cuando hayas terminado de escribir los ingredientes escribe fin")
+    while True:
+        ing = input("- ")
+        if ing.lower() == "fin":
+            break
+        ingrediente.append(ing)
+    pasos = []
+    print("introduce los pasos, escribe fin cuando termines de escribir los pasos")  
+    while True:
+        paso = input("- ")
+        if paso.lower() == "fin":
+            break
+        pasos.append(paso)
+    return nombre, ingrediente, pasos
 # Función principal
 def principal():
-    receta_1 = recetas_vegetarianas("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
-    receta_2 = recetas_no_vegetarianas("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
-    
-    # Duplicación de código al imprimir
-    print("== Mostrar recetas ==")
-    utilidades_restaurante.imprimir_receta(receta_1)
-    utilidades_restaurante.imprimir_receta(receta_2)
 
-    # Código duplicado para mostrar ingredientes
-    print("Ingredientes de Ensalada César:")
-    for ing in receta_1.ingredientes:
-        print(f"* {ing}")
-    
-    print("Ingredientes de Pollo al horno:")
-    for ing in receta_2.ingredientes:
-        print(f"* {ing}")
+           
 
 
 # Ejecutar el programa
