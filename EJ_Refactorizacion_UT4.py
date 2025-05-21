@@ -63,7 +63,17 @@ def crear_receta():
 # Función principal
 def principal():
 
-           
+    nombre, ingrediente, pasos = crear_receta()
+    tipo = input("¿Qué tipo de receta quieres crear? vegetariana/no vegetariana: ")
+
+    if tipo == "vegetariana":
+        print("-Crear receta vegetariana-")
+        receta_1 = recetas_vegetarianas(nombre, ingrediente, pasos)
+    elif tipo == "no vegetariana":
+        print("-Crear receta no vegetariana-")
+        receta_2 = recetas_no_vegetarianas(nombre, ingrediente, pasos)
+    else: 
+        print("Datos introducidos incorrectos")   
 
 
 # Ejecutar el programa
