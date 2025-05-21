@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 
 # Clase abstracta para representar una receta
 class receta(ABC):
-    def __init__(self, n, i, p):
-        self.n = n  # nombre
-        self.i = i  # ingredientes
-        self.p = p  # pasos
+    def __init__(self, nombre, ingredientes, pasos):
+        self.nombre = nombre  
+        self.ingredientes = ingredientes  
+        self.pasos = pasos  
 
     @abstractmethod
     def mostrar(self):
@@ -13,31 +13,31 @@ class receta(ABC):
 
 
 # Clase para recetas vegetarianas
-class recV(receta):
+class recetas_vegetarianas(receta):
     def mostrar(self):
-        print(f"Receta vegetariana: {self.n}")
+        print(f"Receta vegetariana: {self.nombre}")
         print("Ingredientes:")
-        for ing in self.i:
+        for ing in self.ingredientes:
             print(f"- {ing}")
         print("Pasos:")
-        for paso in self.p:
+        for paso in self.pasos:
             print(f"{paso}")
 
 
 # Clase para recetas no vegetarianas
-class recNV(receta):
+class recetas_no_vegetarianas(receta):
     def mostrar(self):
-        print(f"Receta NO vegetariana: {self.n}")
+        print(f"Receta NO vegetariana: {self.nombre}")
         print("Ingredientes:")
-        for ing in self.i:
+        for ing in self.ingredientes:
             print(f"- {ing}")
         print("Pasos:")
-        for paso in self.p:
+        for paso in self.pasos:
             print(f"{paso}")
 
 
 # Clase con utilidades del restaurante
-class utilidades:
+class utilidades_restaurante:
     @staticmethod
     def imprimir_receta(r):
         print("====================================")
@@ -51,21 +51,21 @@ class utilidades:
 
 # Función principal
 def principal():
-    r1 = recV("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
-    r2 = recNV("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
+    receta_1 = recetas_vegetarianas("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
+    receta_2 = recetas_no_vegetarianas("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
     
     # Duplicación de código al imprimir
     print("== Mostrar recetas ==")
-    utilidades.imprimir_receta(r1)
-    utilidades.imprimir_receta(r2)
+    utilidades_restaurante.imprimir_receta(receta_1)
+    utilidades_restaurante.imprimir_receta(receta_2)
 
     # Código duplicado para mostrar ingredientes
     print("Ingredientes de Ensalada César:")
-    for ing in r1.i:
+    for ing in receta_1.ingredientes:
         print(f"* {ing}")
     
     print("Ingredientes de Pollo al horno:")
-    for ing in r2.i:
+    for ing in receta_2.ingredientes:
         print(f"* {ing}")
 
 
